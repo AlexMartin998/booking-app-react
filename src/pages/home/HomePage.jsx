@@ -1,6 +1,10 @@
+import { Header, Navbar } from '../../components';
 
 export const HomePage = () => {
   return (
-    <div>HomePage</div>
+    <div>
+      <Navbar />
+      <Header />
+    </div>
   );
 };

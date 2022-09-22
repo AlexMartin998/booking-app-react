@@ -1,6 +1,10 @@
+import { Header, Navbar } from '../../components';
 
 export const ListPage = () => {
   return (
-    <div>List</div>
+    <div>
+      <Navbar />
+      <Header type="list" />
+    </div>
   );
 };
