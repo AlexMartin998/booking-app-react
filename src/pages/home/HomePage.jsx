@@ -1,11 +1,12 @@
 import {
   Featured,
   FeaturedProperties,
+  Footer,
   Header,
+  MailList,
   Navbar,
   PropertyList,
 } from '../../components';
-import { MailList } from '../../components/mailList/MailList';
 import './home.css';
 
 export const HomePage = () => {
@@ -24,6 +25,8 @@ export const HomePage = () => {
         <FeaturedProperties />
 
         <MailList />
+
+        <Footer />
       </div>
     </div>
   );
