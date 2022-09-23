@@ -1,15 +1,18 @@
 /* eslint-disable indent */
 
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { DateRange } from 'react-date-range';
 import { format } from 'date-fns';
 
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
-
 import './header.css';
 
 export const Header = ({ type }) => {
+  const navigate = useNavigate();
+
+  const [destination, setDestination] = useState('');
   const [openDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
     {
@@ -34,6 +37,11 @@ export const Header = ({ type }) => {
           ? options[name] + 1
           : (options[name] > 0 && options[name] - 1) || 0,
     }));
+  };
+
+  // Pasar state a traves del useNavigate <- catch them with useLocation
+  const handleSearch = () => {
+    navigate('/hotels', { state: { destination, date, options } });
   };
 
   return (
@@ -85,6 +93,7 @@ export const Header = ({ type }) => {
                   type="text"
                   placeholder="Where are you going?"
                   className="headerSearchInput"
+                  onChange={e => setDestination(e.target.value)}
                 />
               </div>
 
@@ -105,6 +114,7 @@ export const Header = ({ type }) => {
                     moveRangeOnFirstSelection={false}
                     ranges={date}
                     className="date"
+                    minDate={new Date()}
                   />
                 )}
               </div>
@@ -187,7 +197,9 @@ export const Header = ({ type }) => {
                 )}
               </div>
               <div className="headerSearchItem">
-                <button className="headerBtn">Search</button>
+                <button className="headerBtn" onClick={handleSearch}>
+                  Search
+                </button>
               </div>
             </div>
           </>
