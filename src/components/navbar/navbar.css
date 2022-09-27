@@ -14,9 +14,11 @@
   justify-content: space-between;
 }
 
-.logo {
+.logo a {
   font-weight: 500;
   font-size: 18px;
+  text-decoration: none;
+  color: white;
 }
 
 .navButton {

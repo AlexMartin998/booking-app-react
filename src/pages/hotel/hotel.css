@@ -2,10 +2,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
 }
 
 .hotelWrapper {
+  margin-top: 24px;
   width: 100%;
   max-width: 1024px;
   display: flex;
@@ -149,3 +149,4 @@
   color: lightgray;
   cursor: pointer;
 }
+
