@@ -8,13 +8,15 @@ import { format } from 'date-fns';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import './header.css';
+import { useSearch } from '../../hooks';
 
 export const Header = ({ type }) => {
   const navigate = useNavigate();
+  const { setSearchData } = useSearch();
 
   const [destination, setDestination] = useState('');
   const [openDate, setOpenDate] = useState(false);
-  const [date, setDate] = useState([
+  const [dates, setDates] = useState([
     {
       startDate: new Date(),
       endDate: new Date(),
@@ -41,7 +43,8 @@ export const Header = ({ type }) => {
 
   // Pasar state a traves del useNavigate <- catch them with useLocation
   const handleSearch = () => {
-    navigate('/hotels', { state: { destination, date, options } });
+    setSearchData({ city: destination, dates, options });
+    navigate('/hotels', { state: { destination, dates, options } });
   };
 
   return (
@@ -103,16 +106,16 @@ export const Header = ({ type }) => {
                 <span
                   onClick={() => setOpenDate(!openDate)}
                   className="headerSearchText"
-                >{`${format(date[0].startDate, 'dd/MM/yyyy')} to ${format(
-                  date[0].endDate,
+                >{`${format(dates[0].startDate, 'dd/MM/yyyy')} to ${format(
+                  dates[0].endDate,
                   'dd/MM/yyyy'
                 )}`}</span>
                 {openDate && (
                   <DateRange
                     editableDateInputs={true}
-                    onChange={item => setDate([item.selection])}
+                    onChange={item => setDates([item.selection])}
                     moveRangeOnFirstSelection={false}
-                    ranges={date}
+                    ranges={dates}
                     className="date"
                     minDate={new Date()}
                   />

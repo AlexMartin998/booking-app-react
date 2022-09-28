@@ -21,13 +21,13 @@ export const useFetch = url => {
     };
 
     fetchData();
-  }, [url]);
+  }, []);
 
   const reFetch = async () => {
     setLoading(true);
 
     try {
-      const { data } = await bookingApi.get('/' + url);
+      const { data } = await bookingApi.get(url);
       setData(data);
     } catch (error) {
       setError(error);
