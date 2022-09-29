@@ -6,3 +6,4 @@ export * from './featuredProperties/FeaturedProperties';
 export * from './mailList/MailList';
 export * from './footer/Footer';
 export * from './searchItem/SearchItem';
+export * from './reserve/Reserve';

@@ -1,5 +1,7 @@
 export const types = {
-  login: '[Auth] Login',
+  startLlogin: '[Auth] Start Login',
+  loginSuccess: '[Auth] Login Success',
+  loginFail: '[Auth] Login Fail',
   logout: '[Auth] Logout',
 
   newSearch: '[Search]: New search',

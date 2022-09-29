@@ -8,11 +8,12 @@ import { format } from 'date-fns';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import './header.css';
-import { useSearch } from '../../hooks';
+import { useAuth, useSearch } from '../../hooks';
 
 export const Header = ({ type }) => {
   const navigate = useNavigate();
   const { setSearchData } = useSearch();
+  const { user } = useAuth();
 
   const [destination, setDestination] = useState('');
   const [openDate, setOpenDate] = useState(false);
@@ -87,7 +88,10 @@ export const Header = ({ type }) => {
               Get rewarded for your travels – unlock instant savings of 10% or
               more with a free Lamabooking account
             </p>
-            <button className="headerBtn">Sign in / Register</button>
+
+            {!user?.uid && (
+              <button className="headerBtn">Sign in / Register</button>
+            )}
 
             <div className="headerSearch">
               <div className="headerSearchItem">
