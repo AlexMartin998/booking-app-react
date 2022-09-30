@@ -44,6 +44,7 @@ export const LoginPage = () => {
           name="email"
           id="eamil"
           className="lInput"
+          placeholder="Email"
           onChange={handleInputChange}
         />
         <input
@@ -51,6 +52,7 @@ export const LoginPage = () => {
           name="password"
           id="password"
           className="lInput"
+          placeholder="Password"
           onChange={handleInputChange}
         />
 

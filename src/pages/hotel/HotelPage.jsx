@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Footer, Header, MailList, Navbar, Reserve } from '../../components';
 import { useAuth, useFetch, useSearch } from '../../hooks';
 import './hotel.css';
@@ -13,7 +13,6 @@ function dayDifference(date1, date2) {
 
 export const HotelPage = () => {
   const { user } = useAuth();
-  const navigate = useNavigate();
   const id = useLocation().pathname.split('/').at(-1);
   const { dates, options } = useSearch();
 
@@ -46,7 +45,7 @@ export const HotelPage = () => {
   };
 
   const handleReserve = () => {
-    if (!user?.uid) return navigate('/', { replace: true });
+    if (!user?.uid) return alert('You must be logged in to make a reservation');
 
     setOpenModal(true);
   };
@@ -84,7 +83,9 @@ export const HotelPage = () => {
           )}
 
           <div className="hotelWrapper">
-            <button className="bookNow">Reserve or Book Now!</button>
+            <button onClick={handleReserve} className="bookNow">
+              Reserve or Book Now!
+            </button>
             <h1 className="hotelTitle">{hotel?.name}</h1>
             <div className="hotelAddress">
               <i className="fa-solid fa-location-dot"></i>
