@@ -35,7 +35,7 @@ To make a reservation in this app it's necessary to log in. Once logged in, you 
 
 ## Backend
 
-[GitHub](https://github.com/AlexMartin998/booking-app-react)
+[GitHub](https://github.com/AlexMartin998/booking-app-back)
 
 ### Screenshots
 
